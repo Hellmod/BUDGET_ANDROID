@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">ADOZL</string>
+
+    <!--Communicates-->
+    <string name="ok">OK</string>
+    <string name="info">Info</string>
+
+    <!--Error-->
+    <string name="error_check_your_network">Sprawdź swoje połączenie z Internetem</string>
+    <string name="error_request_taking_too_long">To trwa dłużej niż zwykle</string>
+    <string name="error_internal_server">Napotkaliśmy trudności techniczne. Spróbuj ponownie za chwilę</string>
+    <string name="error_not_found">Ta czynność jest chwilowo niedostępna</string>
+    <string name="error_service_unavailable">Serwis chwilowo niedostępny. Spróbuj ponownie za chwilę</string>
+    <string name="error_unknown">Wystąpił nieznany błąd</string>
+    <string name="error_unauthorized">Brak dostępu, zaloguj się ponownie</string>
+    <string name="error_not_implemented">Trwają prace nad funkcjonalnością</string>
 </resources>

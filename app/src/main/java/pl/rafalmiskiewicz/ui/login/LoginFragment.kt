@@ -1,0 +1,48 @@
+package pl.rafalmiskiewicz.ui.login
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import pl.rafalmiskiewicz.util.errorhandling.ErrorHandler
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import pl.corelogic.supplify.util.extensions.observeEvent
+import pl.corelogic.supplify.util.extensions.observeFailure
+import pl.rafalmiskiewicz.databinding.FragmentLoginBinding
+import pl.rafalmiskiewicz.util.errorhandling.Failure
+
+class LoginFragment : Fragment() {
+
+    private val loginViewModel by viewModel<LoginViewModel>()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        val binding = FragmentLoginBinding.inflate(inflater, container, false).apply {
+            viewModel = loginViewModel
+            lifecycleOwner = viewLifecycleOwner
+        }
+
+        initObservers()
+
+        return binding.root
+    }
+
+    private fun initObservers() {
+        observeEvent(loginViewModel.event, ::handleEvent)
+        observeFailure(loginViewModel.errorEvent, ::handleError)
+    }
+
+    private fun handleEvent(event: LoginEvent?) {
+        when (event) {
+            //LoginEvent.OpenOrders -> findNavController().navigate(R.id.action_settingsFragment_to_ordersFragment)
+        }
+    }
+
+    private fun handleError(failure: Failure?) {
+        (activity as? ErrorHandler)?.onFailure(failure)
+    }
+}
