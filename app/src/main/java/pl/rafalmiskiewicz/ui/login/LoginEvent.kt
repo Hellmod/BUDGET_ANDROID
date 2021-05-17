@@ -2,5 +2,6 @@ package pl.rafalmiskiewicz.ui.login
 
 import pl.rafalmiskiewicz.util.Event.SpecificEvent
 
-class LoginEvent: SpecificEvent {
+sealed class LoginEvent : SpecificEvent {
+    class Login(val login: String, val password: String) : LoginEvent()
 }

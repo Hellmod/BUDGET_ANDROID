@@ -38,8 +38,12 @@ class LoginFragment : Fragment() {
 
     private fun handleEvent(event: LoginEvent?) {
         when (event) {
-            //LoginEvent.OpenOrders -> findNavController().navigate(R.id.action_settingsFragment_to_ordersFragment)
+            is LoginEvent.Login -> login(event.login,event.password)
         }
+    }
+
+    private fun login(login:String, password:String){
+        val s = login+" "+password
     }
 
     private fun handleError(failure: Failure?) {
