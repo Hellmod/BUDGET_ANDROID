@@ -1,16 +1,22 @@
 package pl.rafalmiskiewicz.ui.login
 
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
-import pl.rafalmiskiewicz.R
+import androidx.lifecycle.viewModelScope
+import pl.rafalmiskiewicz.LoginUseCase
 import pl.rafalmiskiewicz.common.Validator.isValidEmail
+import pl.rafalmiskiewicz.data.source.local.CredentialStore
 import pl.rafalmiskiewicz.ui.base.BaseViewModel
+import pl.rafalmiskiewicz.util.config.ResourceProvider
 
-class LoginViewModel : BaseViewModel<LoginEvent>() {
+class LoginViewModel(
+    private val credentialStore: CredentialStore,
+    private val loginUseCase: LoginUseCase,
+    private val resourceProvider: ResourceProvider
+) : BaseViewModel<LoginEvent>() {
 
     val emailErrorText = MutableLiveData<String>()
     val passwordErrorText = MutableLiveData<String>()
-    val email = MutableLiveData("")
+    val email = MutableLiveData(credentialStore.restore().login)
     val password = MutableLiveData("")
 
     init {
@@ -20,6 +26,19 @@ class LoginViewModel : BaseViewModel<LoginEvent>() {
     fun onLoginClicked() {
         validateAndHandleForm(email.value, password.value) { email, pass ->
             sendEvent(LoginEvent.Login(email, pass))
+            sendLoginRequest(email, pass)
+        }
+    }
+
+    private fun sendLoginRequest(email: String, password: String) {
+        showProgress()
+        loginUseCase.invoke(viewModelScope, LoginUseCase.LoginParams(email, password)) {
+            hideProgress()
+            it.fold({ failure ->
+                sendError(failure)
+            }, {
+
+            })
         }
     }
 
