@@ -6,6 +6,8 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import pl.rafalmiskiewicz.LoginUseCase
+import pl.rafalmiskiewicz.data.source.local.AppPreferences
+import pl.rafalmiskiewicz.data.source.local.CredentialStore
 import pl.rafalmiskiewicz.ui.MainViewModel
 import pl.rafalmiskiewicz.ui.login.LoginViewModel
 import pl.rafalmiskiewicz.util.api.user.UserRepo
@@ -23,9 +25,11 @@ val viewModelModule: Module = module {
 
 val appModule: Module = module {
     single { provideRetrofit() }
+    single { CredentialStore(get()) }
+    single { AppPreferences() }
 }
 
-val useCaseModule  = module {
+val useCaseModule = module {
     factory { LoginUseCase(get(), get(), get()) }
 }
 
