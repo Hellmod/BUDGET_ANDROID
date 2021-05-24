@@ -1,8 +1,10 @@
 package pl.rafalmiskiewicz.ui.login
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import pl.rafalmiskiewicz.common.Validator.isValidEmail
 import pl.rafalmiskiewicz.model.Albums
+import pl.rafalmiskiewicz.model.User
 import pl.rafalmiskiewicz.ui.base.BaseViewModel
 import pl.rafalmiskiewicz.util.api.MainRepository
 import retrofit2.Call
@@ -18,7 +20,8 @@ class LoginViewModel(private val repository: MainRepository) : BaseViewModel<Log
 
     val movieList = MutableLiveData<List<Albums>>()
     val movieListString = MutableLiveData<String>()
-    val errorMessage = MutableLiveData<String>()
+    val token = MutableLiveData<String>()
+    val user = MutableLiveData<User>()
 
     init {
 
@@ -53,6 +56,21 @@ class LoginViewModel(private val repository: MainRepository) : BaseViewModel<Log
         if (isValid && email != null && pass != null) afterValidation(email, pass)
     }
 
+    fun login(email: String, password: String) {
+        val response = repository.login(email, password)
+        response.enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+                Log.d("RMRM", response.body().toString())
+                user.postValue(response.body())
+                token.value = user.value?.token
+            }
+
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                t.message?.let { Log.d("RMRM", it) }
+            }
+        })
+    }
+
     fun getAllMovies() {
 
         val response = repository.getAllMovies()
@@ -63,7 +81,7 @@ class LoginViewModel(private val repository: MainRepository) : BaseViewModel<Log
             }
 
             override fun onFailure(call: Call<List<Albums>>, t: Throwable) {
-                errorMessage.postValue(t.message)
+                movieListString.postValue(t.message)
             }
         })
     }
