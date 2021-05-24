@@ -16,7 +16,7 @@ import pl.rafalmiskiewicz.model.UserClient
 import pl.rafalmiskiewicz.util.errorhandling.Failure
 import retrofit2.HttpException
 
-class LoginFragment(private val api: UserClient) : Fragment() {
+class LoginFragment() : Fragment() {
 
     private val loginViewModel by viewModel<LoginViewModel>()
 
@@ -48,7 +48,7 @@ class LoginFragment(private val api: UserClient) : Fragment() {
 
     private fun login(login: String, password: String) {
 
-        val response = api.login(Login(login, password))
+       // val response = api.login(Login(login, password))
 
     }
 
