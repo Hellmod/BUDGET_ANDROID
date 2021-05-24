@@ -49,6 +49,7 @@ class LoginFragment() : Fragment() {
     private fun login(login: String, password: String) {
 
        // val response = api.login(Login(login, password))
+        loginViewModel.getAllMovies()
 
     }
 
