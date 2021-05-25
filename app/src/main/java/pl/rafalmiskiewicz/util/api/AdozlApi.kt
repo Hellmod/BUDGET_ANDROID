@@ -1,6 +1,6 @@
 package pl.rafalmiskiewicz.util.api
 
-import pl.rafalmiskiewicz.model.Albums
+import pl.rafalmiskiewicz.model.Hours
 import pl.rafalmiskiewicz.model.Login
 import pl.rafalmiskiewicz.model.User
 import retrofit2.Call
@@ -11,8 +11,8 @@ import retrofit2.http.POST
 
 interface AdozlApi {
 
-    @GET("albums")
-    fun getAllMovies(): Call<List<Albums>>
+    @GET("hours")
+    fun getAllMovies(): Call<List<Hours>>
 
     @POST("login")
     fun login(@Header("Content-Type") value: String, @Body login: Login): Call<User>

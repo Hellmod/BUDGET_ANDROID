@@ -26,7 +26,7 @@ val appModule: Module = module {
 
 private fun provideRetrofit(): Retrofit {
     return Retrofit.Builder()
-        .baseUrl("https://jsonplaceholder.typicode.com/")
+        .baseUrl("http://my-json-server.typicode.com/Hellmod/api_android/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 }

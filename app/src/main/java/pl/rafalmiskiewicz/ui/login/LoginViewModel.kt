@@ -3,7 +3,7 @@ package pl.rafalmiskiewicz.ui.login
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import pl.rafalmiskiewicz.common.Validator.isValidEmail
-import pl.rafalmiskiewicz.model.Albums
+import pl.rafalmiskiewicz.model.Hours
 import pl.rafalmiskiewicz.model.User
 import pl.rafalmiskiewicz.ui.base.BaseViewModel
 import pl.rafalmiskiewicz.util.api.MainRepository
@@ -18,7 +18,7 @@ class LoginViewModel(private val repository: MainRepository) : BaseViewModel<Log
     val email = MutableLiveData("")
     val password = MutableLiveData("")
 
-    val movieList = MutableLiveData<List<Albums>>()
+    val movieList = MutableLiveData<List<Hours>>()
     val movieListString = MutableLiveData<String>()
     val token = MutableLiveData<String>()
     val user = MutableLiveData<User>()
@@ -74,13 +74,13 @@ class LoginViewModel(private val repository: MainRepository) : BaseViewModel<Log
     fun getAllMovies() {
 
         val response = repository.getAllMovies()
-        response.enqueue(object : Callback<List<Albums>> {
-            override fun onResponse(call: Call<List<Albums>>, response: Response<List<Albums>>) {
+        response.enqueue(object : Callback<List<Hours>> {
+            override fun onResponse(call: Call<List<Hours>>, response: Response<List<Hours>>) {
                 movieList.postValue(response.body())
                 movieListString.value = movieList.value?.get(0).toString()
             }
 
-            override fun onFailure(call: Call<List<Albums>>, t: Throwable) {
+            override fun onFailure(call: Call<List<Hours>>, t: Throwable) {
                 movieListString.postValue(t.message)
             }
         })
