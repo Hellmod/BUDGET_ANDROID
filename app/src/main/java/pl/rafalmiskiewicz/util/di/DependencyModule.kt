@@ -3,7 +3,9 @@ package pl.rafalmiskiewicz.util.di
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
+import pl.rafalmiskiewicz.data.source.local.AppPreferences
 import pl.rafalmiskiewicz.ui.MainViewModel
+import pl.rafalmiskiewicz.ui.hours.HoursViewModel
 import pl.rafalmiskiewicz.ui.login.LoginViewModel
 import pl.rafalmiskiewicz.util.api.AdozlApi
 import pl.rafalmiskiewicz.util.api.MainRepository
@@ -13,6 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 val viewModelModule: Module = module {
     viewModel { MainViewModel() }
     viewModel { LoginViewModel(get()) }
+    viewModel { HoursViewModel(get()) }
 }
 
 val repository = module {
@@ -20,6 +23,7 @@ val repository = module {
 }
 
 val appModule: Module = module {
+    single { AppPreferences() }
     single { provideRetrofit() }
     single { provideToyotaApi(get()) }
 }

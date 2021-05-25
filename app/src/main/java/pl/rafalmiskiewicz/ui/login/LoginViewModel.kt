@@ -3,8 +3,8 @@ package pl.rafalmiskiewicz.ui.login
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import pl.rafalmiskiewicz.common.Validator.isValidEmail
-import pl.rafalmiskiewicz.model.Hours
-import pl.rafalmiskiewicz.model.User
+import pl.rafalmiskiewicz.data.api.Hours
+import pl.rafalmiskiewicz.data.api.User
 import pl.rafalmiskiewicz.ui.base.BaseViewModel
 import pl.rafalmiskiewicz.util.api.MainRepository
 import retrofit2.Call
@@ -31,6 +31,10 @@ class LoginViewModel(private val repository: MainRepository) : BaseViewModel<Log
         validateAndHandleForm(email.value, password.value) { email, pass ->
             sendEvent(LoginEvent.Login(email, pass))
         }
+    }
+
+    fun onHoursClicked() {
+        sendEvent(LoginEvent.MoveToHours)
     }
 
     private fun validateAndHandleForm(
@@ -73,7 +77,7 @@ class LoginViewModel(private val repository: MainRepository) : BaseViewModel<Log
 
     fun getAllMovies() {
 
-        val response = repository.getAllMovies()
+        val response = repository.getAllHours()
         response.enqueue(object : Callback<List<Hours>> {
             override fun onResponse(call: Call<List<Hours>>, response: Response<List<Hours>>) {
                 movieList.postValue(response.body())

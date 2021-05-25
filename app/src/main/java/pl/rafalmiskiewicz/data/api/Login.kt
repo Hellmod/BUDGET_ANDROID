@@ -1,4 +1,4 @@
-package pl.rafalmiskiewicz.model
+package pl.rafalmiskiewicz.data.api
 
 data class Login(
     val login: String,

@@ -9,5 +9,19 @@
         android:id="@+id/loginFragment"
         android:name="pl.rafalmiskiewicz.ui.login.LoginFragment"
         android:label="LoginFragment"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_hoursFragment"
+            app:destination="@id/hoursFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/hoursFragment"
+        android:name="pl.rafalmiskiewicz.ui.hours.HoursFragment"
+        android:label="LoginFragment"
         tools:layout="@layout/fragment_login" />
 </navigation>

@@ -5,16 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import pl.rafalmiskiewicz.util.errorhandling.ErrorHandler
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pl.corelogic.supplify.util.extensions.observeEvent
 import pl.corelogic.supplify.util.extensions.observeFailure
+import pl.rafalmiskiewicz.R
 import pl.rafalmiskiewicz.databinding.FragmentLoginBinding
-import pl.rafalmiskiewicz.model.Login
-import pl.rafalmiskiewicz.model.User
-import pl.rafalmiskiewicz.model.UserClient
 import pl.rafalmiskiewicz.util.errorhandling.Failure
-import retrofit2.HttpException
 
 class LoginFragment() : Fragment() {
 
@@ -43,6 +41,7 @@ class LoginFragment() : Fragment() {
     private fun handleEvent(event: LoginEvent?) {
         when (event) {
             is LoginEvent.Login -> login(event.login, event.password)
+            is LoginEvent.MoveToHours -> findNavController().navigate(R.id.action_loginFragment_to_hoursFragment)
         }
     }
 

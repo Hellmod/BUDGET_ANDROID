@@ -1,4 +1,4 @@
-package pl.rafalmiskiewicz.model
+package pl.rafalmiskiewicz.data.api
 
 import okhttp3.ResponseBody
 import retrofit2.http.Body
