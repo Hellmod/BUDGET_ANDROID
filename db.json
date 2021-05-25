@@ -18,15 +18,5 @@
     "id_hours":7,
     "hour_from":"Jan 18, 2020, 12:00:00 AM",
     "hour_to":"Jan 18, 2010, 8:00:00 PM",
-  },
-  {
-    "id_hours":25,
-    "hour_from":"Jan 21, 2020, 8:30:00 AM",
-    "hour_to":"Jan 21, 2020, 10:00:00 AM",
-  },
-  {
-    "id_hours":26,
-    "hour_from":"Jan 21, 2020, 10:16:00 AM",
-    "hour_to":"Jan 21, 2020, 11:16:00 AM",
   }
 ]
