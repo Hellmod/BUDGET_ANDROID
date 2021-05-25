@@ -3,144 +3,30 @@
     "id_hours":1,
     "hour_from":"Feb 4, 2020, 12:07:00 AM",
     "hour_to":"Feb 4, 2020, 3:10:00 PM",
-    "user":{
-      "id":1,
-      "email":"rafalmiskiewicz@gmail.com",
-      "password":"$2a$10$TZ7FzC1hFULvvm7aNWjO0eT.RF9nNWrS8LmlOpH/APWF9RHyLnuJW",
-      "name":"Rafał",
-      "lastName":"Miskiewicz",
-      "active":1,
-      "telephone":0,
-      "mark":0,
-      "is_fired":false,
-      "is_new":false,
-      "roles":[
-        {
-          "id":1,
-          "role":"ROLE_ADMIN"
-        }
-      ],
-      "nrRoli":0
-    }
   },
   {
     "id_hours":3,
     "hour_from":"Jan 2, 2020, 12:00:01 AM",
     "hour_to":"Jan 4, 2020, 11:00:02 PM",
-    "user":{
-      "id":1,
-      "email":"rafalmiskiewicz@gmail.com",
-      "password":"$2a$10$TZ7FzC1hFULvvm7aNWjO0eT.RF9nNWrS8LmlOpH/APWF9RHyLnuJW",
-      "name":"Rafał",
-      "lastName":"Miskiewicz",
-      "active":1,
-      "telephone":0,
-      "mark":0,
-      "is_fired":false,
-      "is_new":false,
-      "roles":[
-        {
-          "id":1,
-          "role":"ROLE_ADMIN"
-        }
-      ],
-      "nrRoli":0
-    }
   },
   {
     "id_hours":6,
     "hour_from":"Jan 18, 2020, 12:00:00 AM",
     "hour_to":"Jan 18, 2020, 12:00:09 AM",
-    "user":{
-      "id":1,
-      "email":"rafalmiskiewicz@gmail.com",
-      "password":"$2a$10$TZ7FzC1hFULvvm7aNWjO0eT.RF9nNWrS8LmlOpH/APWF9RHyLnuJW",
-      "name":"Rafał",
-      "lastName":"Miskiewicz",
-      "active":1,
-      "telephone":0,
-      "mark":0,
-      "is_fired":false,
-      "is_new":false,
-      "roles":[
-        {
-          "id":1,
-          "role":"ROLE_ADMIN"
-        }
-      ],
-      "nrRoli":0
-    }
   },
   {
     "id_hours":7,
     "hour_from":"Jan 18, 2020, 12:00:00 AM",
     "hour_to":"Jan 18, 2010, 8:00:00 PM",
-    "user":{
-      "id":1,
-      "email":"rafalmiskiewicz@gmail.com",
-      "password":"$2a$10$TZ7FzC1hFULvvm7aNWjO0eT.RF9nNWrS8LmlOpH/APWF9RHyLnuJW",
-      "name":"Rafał",
-      "lastName":"Miskiewicz",
-      "active":1,
-      "telephone":0,
-      "mark":0,
-      "is_fired":false,
-      "is_new":false,
-      "roles":[
-        {
-          "id":1,
-          "role":"ROLE_ADMIN"
-        }
-      ],
-      "nrRoli":0
-    }
   },
   {
     "id_hours":25,
     "hour_from":"Jan 21, 2020, 8:30:00 AM",
     "hour_to":"Jan 21, 2020, 10:00:00 AM",
-    "user":{
-      "id":1,
-      "email":"rafalmiskiewicz@gmail.com",
-      "password":"$2a$10$TZ7FzC1hFULvvm7aNWjO0eT.RF9nNWrS8LmlOpH/APWF9RHyLnuJW",
-      "name":"Rafał",
-      "lastName":"Miskiewicz",
-      "active":1,
-      "telephone":0,
-      "mark":0,
-      "is_fired":false,
-      "is_new":false,
-      "roles":[
-        {
-          "id":1,
-          "role":"ROLE_ADMIN"
-        }
-      ],
-      "nrRoli":0
-    }
   },
   {
     "id_hours":26,
     "hour_from":"Jan 21, 2020, 10:16:00 AM",
     "hour_to":"Jan 21, 2020, 11:16:00 AM",
-    "user":{
-      "id":1,
-      "email":"rafalmiskiewicz@gmail.com",
-      "password":"$2a$10$TZ7FzC1hFULvvm7aNWjO0eT.RF9nNWrS8LmlOpH/APWF9RHyLnuJW",
-      "name":"Rafał",
-      "lastName":"Miskiewicz",
-      "active":1,
-      "telephone":0,
-      "mark":0,
-      "is_fired":false,
-      "is_new":false,
-      "roles":[
-        {
-          "id":1,
-          "role":"ROLE_ADMIN"
-        }
-      ],
-      "nrRoli":0
-    }
   }
 ]
