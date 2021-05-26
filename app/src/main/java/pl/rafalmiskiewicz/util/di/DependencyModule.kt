@@ -1,7 +1,6 @@
 package pl.rafalmiskiewicz.util.di
 
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
+import com.google.gson.GsonBuilder
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -15,7 +14,6 @@ import pl.rafalmiskiewicz.util.api.AdozlApi
 import pl.rafalmiskiewicz.util.api.MainRepository
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import timber.log.Timber
 
 val viewModelModule: Module = module {
     viewModel { MainViewModel() }
@@ -37,10 +35,14 @@ val appModule: Module = module {
 
 private fun provideRetrofit(httpClientFactory: HttpClientFactory): Retrofit {
 
+    val gson = GsonBuilder()
+        .setDateFormat("MMM dd, yyyy, hh:mm:ss aa")
+        .create()
+
     return Retrofit.Builder()
         .baseUrl("http://my-json-server.typicode.com/Hellmod/api_android/")
         .client(httpClientFactory.getHttpClient())
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
 }
 
