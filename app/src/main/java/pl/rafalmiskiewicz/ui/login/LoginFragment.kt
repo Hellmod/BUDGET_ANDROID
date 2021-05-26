@@ -10,9 +10,13 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import pl.corelogic.supplify.util.extensions.observeEvent
 import pl.corelogic.supplify.util.extensions.observeFailure
 import pl.rafalmiskiewicz.databinding.FragmentLoginBinding
+import pl.rafalmiskiewicz.model.Login
+import pl.rafalmiskiewicz.model.User
+import pl.rafalmiskiewicz.model.UserClient
 import pl.rafalmiskiewicz.util.errorhandling.Failure
+import retrofit2.HttpException
 
-class LoginFragment : Fragment() {
+class LoginFragment() : Fragment() {
 
     private val loginViewModel by viewModel<LoginViewModel>()
 
@@ -38,12 +42,14 @@ class LoginFragment : Fragment() {
 
     private fun handleEvent(event: LoginEvent?) {
         when (event) {
-            is LoginEvent.Login -> login(event.login,event.password)
+            is LoginEvent.Login -> login(event.login, event.password)
         }
     }
 
-    private fun login(login:String, password:String){
-        val s = login+" "+password
+    private fun login(login: String, password: String) {
+        loginViewModel.getAllMovies()
+        loginViewModel.login(login,password)
+
     }
 
     private fun handleError(failure: Failure?) {
