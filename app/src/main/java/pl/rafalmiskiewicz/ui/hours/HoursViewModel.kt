@@ -10,7 +10,8 @@ import retrofit2.Response
 
 class HoursViewModel(private val repository: MainRepository) : BaseViewModel<HoursEvent>() {
 
-    val movieList = MutableLiveData<List<Hours>>()
+    val hoursList = MutableLiveData<List<Hours>>()
+    val hoursListShow = MutableLiveData<List<Hours>>()
     val movieListString = MutableLiveData<String>()
 
     fun getAllHours() {
@@ -18,8 +19,9 @@ class HoursViewModel(private val repository: MainRepository) : BaseViewModel<Hou
         val response = repository.getAllHours()
         response.enqueue(object : Callback<List<Hours>> {
             override fun onResponse(call: Call<List<Hours>>, response: Response<List<Hours>>) {
-                movieList.postValue(response.body())
-                movieListString.value = movieList.value?.toString()
+                hoursList.postValue(response.body())
+                //hoursListShow.value=hoursList.value
+                movieListString.value = hoursList.value?.toString()
             }
 
             override fun onFailure(call: Call<List<Hours>>, t: Throwable) {

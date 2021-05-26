@@ -8,12 +8,17 @@ import pl.rafalmiskiewicz.data.source.HttpClientFactory
 import pl.rafalmiskiewicz.data.source.local.AppPreferences
 import pl.rafalmiskiewicz.data.source.local.CredentialStore
 import pl.rafalmiskiewicz.ui.MainViewModel
+import pl.rafalmiskiewicz.ui.hours.HoursAdapter
 import pl.rafalmiskiewicz.ui.hours.HoursViewModel
 import pl.rafalmiskiewicz.ui.login.LoginViewModel
 import pl.rafalmiskiewicz.util.api.AdozlApi
 import pl.rafalmiskiewicz.util.api.MainRepository
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+
+val adapterModule = module {
+    factory { HoursAdapter() }
+}
 
 val viewModelModule: Module = module {
     viewModel { MainViewModel() }

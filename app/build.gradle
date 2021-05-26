@@ -21,6 +21,7 @@ android {
 
     buildFeatures {
         dataBinding = true
+        viewBinding = true
     }
 
     buildTypes {
@@ -100,4 +101,6 @@ dependencies {
 
     //aes
     implementation "com.scottyab:aescrypt:0.0.1"
+
+    implementation "androidx.recyclerview:recyclerview:1.2.0"
 }
