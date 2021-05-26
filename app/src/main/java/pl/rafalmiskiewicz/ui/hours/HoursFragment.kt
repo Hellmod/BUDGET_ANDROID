@@ -35,6 +35,7 @@ class HoursFragment() : Fragment() {
     override fun onResume() {
         super.onResume()
         hoursViewModel.getAllHours()
+        hoursViewModel.getAllHours()
     }
 
     private fun initObservers() {

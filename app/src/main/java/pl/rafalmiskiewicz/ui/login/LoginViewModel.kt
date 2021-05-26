@@ -81,7 +81,7 @@ class LoginViewModel(private val repository: MainRepository) : BaseViewModel<Log
         response.enqueue(object : Callback<List<Hours>> {
             override fun onResponse(call: Call<List<Hours>>, response: Response<List<Hours>>) {
                 movieList.postValue(response.body())
-                movieListString.value = movieList.value?.get(0).toString()
+                movieListString.value = movieList.value?.toString()
             }
 
             override fun onFailure(call: Call<List<Hours>>, t: Throwable) {
