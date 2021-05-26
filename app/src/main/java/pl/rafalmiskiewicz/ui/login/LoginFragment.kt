@@ -12,7 +12,11 @@ import pl.corelogic.supplify.util.extensions.observeEvent
 import pl.corelogic.supplify.util.extensions.observeFailure
 import pl.rafalmiskiewicz.R
 import pl.rafalmiskiewicz.databinding.FragmentLoginBinding
+import pl.rafalmiskiewicz.model.Login
+import pl.rafalmiskiewicz.model.User
+import pl.rafalmiskiewicz.model.UserClient
 import pl.rafalmiskiewicz.util.errorhandling.Failure
+import retrofit2.HttpException
 
 class LoginFragment() : Fragment() {
 
