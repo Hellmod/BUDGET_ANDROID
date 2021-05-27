@@ -11,7 +11,6 @@ import retrofit2.Response
 class HoursViewModel(private val repository: MainRepository) : BaseViewModel<HoursEvent>() {
 
     val hoursList = MutableLiveData<List<Hours>>()
-    val hoursListShow = MutableLiveData<List<Hours>>()
     val movieListString = MutableLiveData<String>()
 
     fun getAllHours() {
@@ -20,7 +19,6 @@ class HoursViewModel(private val repository: MainRepository) : BaseViewModel<Hou
         response.enqueue(object : Callback<List<Hours>> {
             override fun onResponse(call: Call<List<Hours>>, response: Response<List<Hours>>) {
                 hoursList.postValue(response.body())
-                //hoursListShow.value=hoursList.value
                 movieListString.value = hoursList.value?.toString()
             }
 

@@ -6,6 +6,8 @@ import pl.rafalmiskiewicz.data.api.Hours
 import pl.rafalmiskiewicz.databinding.ItemHoursBinding
 import pl.rafalmiskiewicz.ui.base.*
 import pl.rafalmiskiewicz.ui.base.BaseHolder
+import pl.rafalmiskiewicz.util.helpers.DateHelper.parseDate
+import pl.rafalmiskiewicz.util.helpers.DateHelper.parseHour
 import kotlin.properties.Delegates
 
 class HoursAdapter : BaseAdapter<Hours>(), AutoUpdatableAdapter {
@@ -21,7 +23,7 @@ class HoursAdapter : BaseAdapter<Hours>(), AutoUpdatableAdapter {
     }
 
     override fun onBindViewHolder(holder: BaseHolder<Hours>, position: Int) {
-        //holder.bind(items[position], clickListener)
+        holder.bind(items[position], clickListener)
     }
 
     class FavouriteHolder(val binding: ItemHoursBinding) : BaseHolder<Hours>(binding) {
@@ -29,7 +31,9 @@ class HoursAdapter : BaseAdapter<Hours>(), AutoUpdatableAdapter {
         override fun bind(item: Hours, clickListener: OnRecyclerListener?) {
 
             binding.apply {
-                itemHoursDay.text = item.hour_from.toString()
+                itemHoursDay.text = parseDate(item.hour_from)
+                itemHoursHourFrom.text = parseHour(item.hour_from)
+                itemHoursHourTo.text = parseHour(item.hour_to)
             }
 
         }
