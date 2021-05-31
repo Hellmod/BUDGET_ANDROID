@@ -5,13 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import pl.rafalmiskiewicz.common.Validator.isValidEmail
 import pl.rafalmiskiewicz.data.api.Hours
 import pl.rafalmiskiewicz.data.api.User
+import pl.rafalmiskiewicz.data.source.local.CredentialStore
 import pl.rafalmiskiewicz.ui.base.BaseViewModel
 import pl.rafalmiskiewicz.util.api.MainRepository
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginViewModel(private val repository: MainRepository) : BaseViewModel<LoginEvent>() {
+class LoginViewModel(
+    private val repository: MainRepository,
+    private val credentialStore: CredentialStore,
+) : BaseViewModel<LoginEvent>() {
 
     val emailErrorText = MutableLiveData<String>()
     val passwordErrorText = MutableLiveData<String>()
@@ -61,33 +65,43 @@ class LoginViewModel(private val repository: MainRepository) : BaseViewModel<Log
     }
 
     fun login(email: String, password: String) {
+        showProgress()
         val response = repository.login(email, password)
         response.enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
+                hideProgress()
+
                 Log.d("RMRM", response.body().toString())
                 user.postValue(response.body())
-                token.value = user.value?.token
+                user.value.let {params->
+                    if (params != null) {
+                        credentialStore.store("", "", params.jwt)
+                    }
+                }
+
+                token.value = user.value?.jwt
             }
 
             override fun onFailure(call: Call<User>, t: Throwable) {
+                hideProgress()
                 t.message?.let { Log.d("RMRM", it) }
             }
         })
     }
 
-    fun getAllMovies() {
-
-        val response = repository.getAllHours()
-        response.enqueue(object : Callback<List<Hours>> {
-            override fun onResponse(call: Call<List<Hours>>, response: Response<List<Hours>>) {
-                movieList.postValue(response.body())
-                movieListString.value = movieList.value?.toString()
-            }
-
-            override fun onFailure(call: Call<List<Hours>>, t: Throwable) {
-                movieListString.postValue(t.message)
-            }
-        })
-    }
+//    fun getAllMovies() {
+//
+//        val response = repository.getAllHours()
+//        response.enqueue(object : Callback<List<Hours>> {
+//            override fun onResponse(call: Call<List<Hours>>, response: Response<List<Hours>>) {
+//                movieList.postValue(response.body())
+//                movieListString.value = movieList.value?.toString()
+//            }
+//
+//            override fun onFailure(call: Call<List<Hours>>, t: Throwable) {
+//                movieListString.postValue(t.message)
+//            }
+//        })
+//    }
 
 }

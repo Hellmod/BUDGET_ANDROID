@@ -15,7 +15,7 @@ class CredentialStore(
         }
         get() = false//appPreferences.isUserLogged//RM
 
-/*    fun store(login: String, password: String, token: String) {
+    fun store(login: String, password: String, token: String) {
         val encryptedLogin = AESCrypt.encrypt(key, login)
         val encryptedPassword = AESCrypt.encrypt(key, password)
         val encryptedToken = AESCrypt.encrypt(key, token)
@@ -23,7 +23,7 @@ class CredentialStore(
         appPreferences.userLogin = encryptedLogin
         appPreferences.userPassword = encryptedPassword
         appPreferences.userToken = encryptedToken
-    }*/
+    }
 
     fun restore(): Credentials {
         val encryptedLogin = appPreferences.userLogin

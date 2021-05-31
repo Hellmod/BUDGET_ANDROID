@@ -46,7 +46,7 @@ class LoginFragment() : Fragment() {
     }
 
     private fun login(login: String, password: String) {
-        loginViewModel.getAllMovies()
+      //  loginViewModel.getAllMovies()
         loginViewModel.login(login,password)
 
     }
