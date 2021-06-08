@@ -1,4 +1,4 @@
-package pl.rafalmiskiewicz.model
+package pl.rafalmiskiewicz.data.api
 
 import java.util.*
 

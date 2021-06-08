@@ -2,8 +2,10 @@ package pl.rafalmiskiewicz
 
 import android.app.Application
 import androidx.databinding.library.BuildConfig
+import com.chibatching.kotpref.Kotpref
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
+import pl.rafalmiskiewicz.util.di.adapterModule
 import pl.rafalmiskiewicz.util.di.appModule
 import pl.rafalmiskiewicz.util.di.repository
 import pl.rafalmiskiewicz.util.di.viewModelModule
@@ -14,6 +16,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         initializeTimber()
+        initializeKotPref()
         initializeDependencyInjections()
     }
 
@@ -30,9 +33,14 @@ class App : Application() {
                 modules = listOf(
                     viewModelModule,
                     repository,
-                    appModule
+                    appModule,
+                    adapterModule
                 )
             )
         }
+    }
+
+    private fun initializeKotPref() {
+        Kotpref.init(this)
     }
 }
