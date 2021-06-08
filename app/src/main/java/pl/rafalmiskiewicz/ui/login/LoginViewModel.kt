@@ -20,19 +20,21 @@ class LoginViewModel(
     val passwordErrorText = MutableLiveData<String>()
     val email = MutableLiveData("")
     val password = MutableLiveData("")
-
-    val movieListString = MutableLiveData<String>()
-    val token = MutableLiveData<String>()
     val user = MutableLiveData<User>()
+    val isLogin = MutableLiveData<Boolean>(false)
 
     init {
-
+        isLogin.value = credentialStore.isLogged
     }
 
     fun onLoginClicked() {
         validateAndHandleForm(email.value, password.value) { email, pass ->
             sendEvent(LoginEvent.Login(email, pass))
         }
+    }
+
+    fun onLogOutClicked() {
+        sendEvent(LoginEvent.LogOut)
     }
 
     fun onHoursClicked() {
@@ -70,21 +72,29 @@ class LoginViewModel(
                 hideProgress()
 
                 user.postValue(response.body())
-                user.value.let {params->
+                user.value.let { params ->
                     if (params != null) {
                         credentialStore.store(email, password, params.jwt)
                         credentialStore.isLogged = true
+                        isLogin.value = true
                     }
                 }
                 Log.d("RMRM", response.body().toString())
-                token.value = user.value?.jwt
             }
 
             override fun onFailure(call: Call<User>, t: Throwable) {
                 hideProgress()
-                t.message?.let { Log.d("RMRM","ERROR:"+ it) }
+                t.message?.let { Log.d("RMRM", "ERROR:" + it) }
+                isLogin.value = false
             }
         })
+    }
+
+    fun logOut() {
+        credentialStore.isLogged = false
+        isLogin.value = false
+        credentialStore.store("", "", "")
+        Log.d("RMRM", "Wylogowano")
     }
 
 }

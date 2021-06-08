@@ -40,15 +40,10 @@ class LoginFragment() : Fragment() {
 
     private fun handleEvent(event: LoginEvent?) {
         when (event) {
-            is LoginEvent.Login -> login(event.login, event.password)
+            is LoginEvent.Login -> loginViewModel.login(event.login, event.password)
+            is LoginEvent.LogOut -> loginViewModel.logOut()
             is LoginEvent.MoveToHours -> findNavController().navigate(R.id.action_loginFragment_to_hoursFragment)
         }
-    }
-
-    private fun login(login: String, password: String) {
-      //  loginViewModel.getAllMovies()
-        loginViewModel.login(login,password)
-
     }
 
     private fun handleError(failure: Failure?) {
