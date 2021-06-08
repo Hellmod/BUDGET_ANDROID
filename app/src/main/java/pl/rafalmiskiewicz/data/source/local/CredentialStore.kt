@@ -8,12 +8,12 @@ class CredentialStore(
 
     private val key = "jRbg3uNZAhQx2PyXZjMsRVU2UPQHm3"
 
-    var isLogged: Boolean = false//appPreferences.isUserLogged//RM
+    var isLogged: Boolean = appPreferences.isUserLogged
         set(value) {
-            //appPreferences.isUserLogged = value //RM
+            appPreferences.isUserLogged = value
             field = value
         }
-        get() = false//appPreferences.isUserLogged//RM
+        get() = appPreferences.isUserLogged
 
     fun store(login: String, password: String, token: String) {
         val encryptedLogin = AESCrypt.encrypt(key, login)

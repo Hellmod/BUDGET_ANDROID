@@ -2,6 +2,7 @@ package pl.rafalmiskiewicz
 
 import android.app.Application
 import androidx.databinding.library.BuildConfig
+import com.chibatching.kotpref.Kotpref
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import pl.rafalmiskiewicz.util.di.adapterModule
@@ -15,6 +16,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         initializeTimber()
+        initializeKotPref()
         initializeDependencyInjections()
     }
 
@@ -36,5 +38,9 @@ class App : Application() {
                 )
             )
         }
+    }
+
+    private fun initializeKotPref() {
+        Kotpref.init(this)
     }
 }

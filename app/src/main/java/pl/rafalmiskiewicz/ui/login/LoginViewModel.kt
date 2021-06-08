@@ -3,7 +3,6 @@ package pl.rafalmiskiewicz.ui.login
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import pl.rafalmiskiewicz.common.Validator.isValidEmail
-import pl.rafalmiskiewicz.data.api.Hours
 import pl.rafalmiskiewicz.data.api.User
 import pl.rafalmiskiewicz.data.source.local.CredentialStore
 import pl.rafalmiskiewicz.ui.base.BaseViewModel
@@ -22,7 +21,6 @@ class LoginViewModel(
     val email = MutableLiveData("")
     val password = MutableLiveData("")
 
-    val movieList = MutableLiveData<List<Hours>>()
     val movieListString = MutableLiveData<String>()
     val token = MutableLiveData<String>()
     val user = MutableLiveData<User>()
@@ -66,42 +64,27 @@ class LoginViewModel(
 
     fun login(email: String, password: String) {
         showProgress()
-        val response = repository.login(email, password)
+        val response = repository.loginFake(email, password)
         response.enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 hideProgress()
 
-                Log.d("RMRM", response.body().toString())
                 user.postValue(response.body())
                 user.value.let {params->
                     if (params != null) {
-                        credentialStore.store("", "", params.jwt)
+                        credentialStore.store(email, password, params.jwt)
+                        credentialStore.isLogged = true
                     }
                 }
-
+                Log.d("RMRM", response.body().toString())
                 token.value = user.value?.jwt
             }
 
             override fun onFailure(call: Call<User>, t: Throwable) {
                 hideProgress()
-                t.message?.let { Log.d("RMRM", it) }
+                t.message?.let { Log.d("RMRM","ERROR:"+ it) }
             }
         })
     }
-
-//    fun getAllMovies() {
-//
-//        val response = repository.getAllHours()
-//        response.enqueue(object : Callback<List<Hours>> {
-//            override fun onResponse(call: Call<List<Hours>>, response: Response<List<Hours>>) {
-//                movieList.postValue(response.body())
-//                movieListString.value = movieList.value?.toString()
-//            }
-//
-//            override fun onFailure(call: Call<List<Hours>>, t: Throwable) {
-//                movieListString.postValue(t.message)
-//            }
-//        })
-//    }
 
 }

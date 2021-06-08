@@ -19,7 +19,7 @@ class HttpClientFactory(
             .addInterceptor { chain ->
                 val ongoing = chain.request().newBuilder()
                 if (credentialStore.isLogged) {
-                    ongoing.addHeader("Authorization", "Bearer " + credentialStore.restore().token)
+                    ongoing.addHeader("Authorization", "Bearer " + credentialStore.restore().token)//RM
                 }
                 return@addInterceptor chain.proceed(ongoing.build())
             }

@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -14,6 +13,7 @@ import pl.rafalmiskiewicz.databinding.ActivityMainBinding
 import pl.rafalmiskiewicz.ui.base.BaseActivity
 
 class MainActivity : BaseActivity() {
+
     private val appPreferences: AppPreferences by inject()
 
     private var currentNavController: LiveData<NavController>? = null

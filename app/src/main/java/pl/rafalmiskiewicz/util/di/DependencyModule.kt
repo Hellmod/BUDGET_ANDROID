@@ -27,7 +27,7 @@ val viewModelModule: Module = module {
 }
 
 val repository = module {
-    factory { MainRepository(get(),get()) }
+    factory { MainRepository(get()) }
 }
 
 val appModule: Module = module {
@@ -45,7 +45,7 @@ private fun provideRetrofit(httpClientFactory: HttpClientFactory): Retrofit {
         .create()
 
     return Retrofit.Builder()
-        .baseUrl("http://192.168.0.107:8080/api/")
+        .baseUrl("http://my-json-server.typicode.com/Hellmod/api_android/")// http://192.168.0.107:8080/api/ ||  http://my-json-server.typicode.com/Hellmod/api_android/
         .client(httpClientFactory.getHttpClient())
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()

@@ -11,9 +11,12 @@ import retrofit2.http.POST
 
 interface AdozlApi {
 
-    @GET("hour")
-    fun getAllHours(@Header("Authorization") token: String): Call<List<Hours>>
+    @GET("hours")
+    fun getAllHours(): Call<List<Hours>>
 
     @POST("authenticate")
     fun login(@Header("Content-Type") value: String, @Body login: Login): Call<User>
+
+    @GET("authenticate")
+    fun loginFake(@Header("Content-Type") value: String): Call<User>
 }
