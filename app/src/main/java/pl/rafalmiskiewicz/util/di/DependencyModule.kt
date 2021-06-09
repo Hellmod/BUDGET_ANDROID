@@ -11,6 +11,8 @@ import pl.rafalmiskiewicz.ui.MainViewModel
 import pl.rafalmiskiewicz.ui.hours.HoursAdapter
 import pl.rafalmiskiewicz.ui.hours.HoursViewModel
 import pl.rafalmiskiewicz.ui.login.LoginViewModel
+import pl.rafalmiskiewicz.ui.schedules.SchedulesAdapter
+import pl.rafalmiskiewicz.ui.schedules.SchedulesViewModel
 import pl.rafalmiskiewicz.util.api.AdozlApi
 import pl.rafalmiskiewicz.util.api.MainRepository
 import retrofit2.Retrofit
@@ -18,12 +20,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val adapterModule = module {
     factory { HoursAdapter() }
+    factory { SchedulesAdapter() }
 }
 
 val viewModelModule: Module = module {
     viewModel { MainViewModel() }
     viewModel { LoginViewModel(get(),get())}
     viewModel { HoursViewModel(get()) }
+    viewModel { SchedulesViewModel(get()) }
 }
 
 val repository = module {

@@ -43,6 +43,7 @@ class LoginFragment() : Fragment() {
             is LoginEvent.Login -> loginViewModel.login(event.login, event.password)
             is LoginEvent.LogOut -> loginViewModel.logOut()
             is LoginEvent.MoveToHours -> findNavController().navigate(R.id.action_loginFragment_to_hoursFragment)
+            is LoginEvent.MoveToSchedules -> findNavController().navigate(R.id.action_loginFragment_to_schedulesFragment)
         }
     }
 

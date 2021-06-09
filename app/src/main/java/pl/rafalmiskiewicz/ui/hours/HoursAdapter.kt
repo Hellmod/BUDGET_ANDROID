@@ -3,7 +3,7 @@ package pl.rafalmiskiewicz.ui.hours
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import pl.rafalmiskiewicz.data.api.Hours
-import pl.rafalmiskiewicz.databinding.ItemHoursBinding
+import pl.rafalmiskiewicz.databinding.ItemHourBinding
 import pl.rafalmiskiewicz.ui.base.*
 import pl.rafalmiskiewicz.ui.base.BaseHolder
 import pl.rafalmiskiewicz.util.helpers.DateHelper.parseDate
@@ -18,7 +18,7 @@ class HoursAdapter : BaseAdapter<Hours>(), AutoUpdatableAdapter {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder<Hours> {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = ItemHoursBinding.inflate(inflater, parent, false)
+        val binding = ItemHourBinding.inflate(inflater, parent, false)
         return FavouriteHolder(binding)
     }
 
@@ -26,7 +26,7 @@ class HoursAdapter : BaseAdapter<Hours>(), AutoUpdatableAdapter {
         holder.bind(items[position], clickListener)
     }
 
-    class FavouriteHolder(val binding: ItemHoursBinding) : BaseHolder<Hours>(binding) {
+    class FavouriteHolder(val binding: ItemHourBinding) : BaseHolder<Hours>(binding) {
 
         override fun bind(item: Hours, clickListener: OnRecyclerListener?) {
 
