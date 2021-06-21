@@ -4,9 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import pl.rafalmiskiewicz.data.api.Schedules
 import pl.rafalmiskiewicz.databinding.ItemScheduleBinding
-
 import pl.rafalmiskiewicz.ui.base.*
-import pl.rafalmiskiewicz.ui.base.BaseHolder
 import pl.rafalmiskiewicz.util.helpers.DateHelper.parseDate
 import pl.rafalmiskiewicz.util.helpers.DateHelper.parseHour
 import kotlin.properties.Delegates
@@ -36,6 +34,9 @@ class SchedulesAdapter : BaseAdapter<Schedules>(), AutoUpdatableAdapter {
                 itemSchedulesHourFrom.text = parseHour(item.hour_from)
                 itemSchedulesHourTo.text = parseHour(item.hour_to)
                 itemSchedulesDescription.text = item.places.description
+                itemSchedulesNavigate.setOnClickListener{
+                    clickListener?.onClick(RunMap,bindingAdapterPosition)
+                }
             }
 
         }

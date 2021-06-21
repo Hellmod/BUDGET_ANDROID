@@ -83,7 +83,6 @@ class LoginViewModel(
                         isLogin.value = true
                     }
                 }
-                Log.d("RMRM", response.body().toString())
             }
 
             override fun onFailure(call: Call<User>, t: Throwable) {
@@ -98,7 +97,6 @@ class LoginViewModel(
         credentialStore.isLogged = false
         isLogin.value = false
         credentialStore.store("", "", "")
-        Log.d("RMRM", "Wylogowano")
     }
 
 }

@@ -1,9 +1,12 @@
 package pl.rafalmiskiewicz.ui.schedules
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import org.koin.android.ext.android.inject
 import pl.rafalmiskiewicz.util.errorhandling.ErrorHandler
@@ -48,10 +51,22 @@ class SchedulesFragment() : Fragment() {
     }
 
     private fun handleEvent(event: SchedulesEvent?) {
-
+        when (event) {
+            is SchedulesEvent.OpenMap -> openMap(event.addressGoogle)
+        }
     }
 
     private fun handleError(failure: Failure?) {
         (activity as? ErrorHandler)?.onFailure(failure)
+    }
+
+    private fun openMap(address_google:String) {
+        context?.let {
+            val uri: Uri =
+                Uri.parse(address_google) // missing 'http://' will cause crashed
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            ContextCompat.startActivity(it, intent, null)
+        }
+
     }
 }

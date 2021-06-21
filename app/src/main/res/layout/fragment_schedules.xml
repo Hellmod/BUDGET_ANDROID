@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             app:data="@{viewModel.schedulesList}"
+            app:onRecyclerClick="@{viewModel::onParkingHistoryClicked}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
