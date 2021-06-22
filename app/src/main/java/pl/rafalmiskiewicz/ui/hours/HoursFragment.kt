@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import pl.corelogic.supplify.util.extensions.observeEvent
+import pl.rafalmiskiewicz.util.extensions.observeEvent
 import pl.rafalmiskiewicz.databinding.FragmentHoursBinding
 
 class HoursFragment() : Fragment() {
