@@ -6,12 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import org.koin.android.ext.android.inject
-import pl.rafalmiskiewicz.util.errorhandling.ErrorHandler
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pl.corelogic.supplify.util.extensions.observeEvent
-import pl.corelogic.supplify.util.extensions.observeFailure
 import pl.rafalmiskiewicz.databinding.FragmentHoursBinding
-import pl.rafalmiskiewicz.util.errorhandling.Failure
 
 class HoursFragment() : Fragment() {
 
@@ -44,14 +41,9 @@ class HoursFragment() : Fragment() {
 
     private fun initObservers() {
         observeEvent(hoursViewModel.event, ::handleEvent)
-        observeFailure(hoursViewModel.errorEvent, ::handleError)
     }
 
     private fun handleEvent(event: HoursEvent?) {
 
-    }
-
-    private fun handleError(failure: Failure?) {
-        (activity as? ErrorHandler)?.onFailure(failure)
     }
 }

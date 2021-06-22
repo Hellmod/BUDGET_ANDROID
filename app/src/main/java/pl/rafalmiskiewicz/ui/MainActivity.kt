@@ -1,6 +1,7 @@
 package pl.rafalmiskiewicz.ui
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
@@ -10,9 +11,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import pl.rafalmiskiewicz.R
 import pl.rafalmiskiewicz.data.source.local.AppPreferences
 import pl.rafalmiskiewicz.databinding.ActivityMainBinding
-import pl.rafalmiskiewicz.ui.base.BaseActivity
 
-class MainActivity : BaseActivity() {
+class MainActivity : AppCompatActivity() {
 
     private val appPreferences: AppPreferences by inject()
 

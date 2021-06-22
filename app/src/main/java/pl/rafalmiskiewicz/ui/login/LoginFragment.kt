@@ -6,13 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import pl.rafalmiskiewicz.util.errorhandling.ErrorHandler
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pl.corelogic.supplify.util.extensions.observeEvent
-import pl.corelogic.supplify.util.extensions.observeFailure
 import pl.rafalmiskiewicz.R
 import pl.rafalmiskiewicz.databinding.FragmentLoginBinding
-import pl.rafalmiskiewicz.util.errorhandling.Failure
 
 class LoginFragment() : Fragment() {
 
@@ -35,7 +32,6 @@ class LoginFragment() : Fragment() {
 
     private fun initObservers() {
         observeEvent(loginViewModel.event, ::handleEvent)
-        observeFailure(loginViewModel.errorEvent, ::handleError)
     }
 
     private fun handleEvent(event: LoginEvent?) {
@@ -45,9 +41,5 @@ class LoginFragment() : Fragment() {
             is LoginEvent.MoveToHours -> findNavController().navigate(R.id.action_loginFragment_to_hoursFragment)
             is LoginEvent.MoveToSchedules -> findNavController().navigate(R.id.action_loginFragment_to_schedulesFragment)
         }
-    }
-
-    private fun handleError(failure: Failure?) {
-        (activity as? ErrorHandler)?.onFailure(failure)
     }
 }

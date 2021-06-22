@@ -9,12 +9,9 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import org.koin.android.ext.android.inject
-import pl.rafalmiskiewicz.util.errorhandling.ErrorHandler
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pl.corelogic.supplify.util.extensions.observeEvent
-import pl.corelogic.supplify.util.extensions.observeFailure
 import pl.rafalmiskiewicz.databinding.FragmentSchedulesBinding
-import pl.rafalmiskiewicz.util.errorhandling.Failure
 
 class SchedulesFragment() : Fragment() {
 
@@ -47,17 +44,12 @@ class SchedulesFragment() : Fragment() {
 
     private fun initObservers() {
         observeEvent(schedulesViewModel.event, ::handleEvent)
-        observeFailure(schedulesViewModel.errorEvent, ::handleError)
     }
 
     private fun handleEvent(event: SchedulesEvent?) {
         when (event) {
             is SchedulesEvent.OpenMap -> openMap(event.addressGoogle)
         }
-    }
-
-    private fun handleError(failure: Failure?) {
-        (activity as? ErrorHandler)?.onFailure(failure)
     }
 
     private fun openMap(address_google:String) {
