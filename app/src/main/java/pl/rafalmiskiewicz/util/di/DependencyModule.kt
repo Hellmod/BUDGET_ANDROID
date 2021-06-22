@@ -37,7 +37,7 @@ val repository = module {
 val appModule: Module = module {
     single { AppPreferences() }
     single { provideRetrofit(get()) }
-    single { provideToyotaApi(get()) }
+    single { provideAdozlApi(get()) }
     single { HttpClientFactory(get()) }
     single { CredentialStore(get()) }
 }
@@ -55,4 +55,4 @@ private fun provideRetrofit(httpClientFactory: HttpClientFactory): Retrofit {
         .build()
 }
 
-private fun provideToyotaApi(retrofit: Retrofit): AdozlApi = retrofit.create(AdozlApi::class.java)
+private fun provideAdozlApi(retrofit: Retrofit): AdozlApi = retrofit.create(AdozlApi::class.java)
