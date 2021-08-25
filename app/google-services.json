@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "213815392793",
+    "firebase_url": "https://adozl0749.firebaseio.com",
+    "project_id": "adozl0749",
+    "storage_bucket": "adozl0749.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213815392793:android:9ec13ad982377662510888",
+        "android_client_info": {
+          "package_name": "pl.rafalmiskiewicz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "213815392793-0e8nu8mulicdv90ll19sq1f3325vuf65.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfgQas5KE613rmzP4G9P6T8NlFX4SKn_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "213815392793-0e8nu8mulicdv90ll19sq1f3325vuf65.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
