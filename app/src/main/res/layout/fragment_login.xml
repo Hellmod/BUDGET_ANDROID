@@ -79,6 +79,7 @@
         android:layout_margin="4dp"
         android:text="Godziny"
         android:onClick="@{() -> viewModel.onHoursClicked()}"
+        app:isVisible="@{viewModel.isLogin}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -88,6 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         android:onClick="@{() -> viewModel.onSchedulesClicked()}"
+        app:isVisible="@{viewModel.isLogin}"
         android:text="Harmonogram"
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintTop_toTopOf="parent" />

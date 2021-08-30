@@ -49,7 +49,7 @@ private fun provideRetrofit(httpClientFactory: HttpClientFactory): Retrofit {
         .create()
 
     return Retrofit.Builder()
-        .baseUrl("http://my-json-server.typicode.com/Hellmod/api_android/")// http://192.168.0.107:8080/api/ ||  http://my-json-server.typicode.com/Hellmod/api_android/
+        .baseUrl("http://192.168.196.32:8080/api/")//http://localhost:8080/||  http://192.168.0.107:8080/api/ ||  http://my-json-server.typicode.com/Hellmod/api_android/
         .client(httpClientFactory.getHttpClient())
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
