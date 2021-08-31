@@ -10,6 +10,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import pl.rafalmiskiewicz.util.extensions.observeEvent
 import pl.rafalmiskiewicz.R
 import pl.rafalmiskiewicz.databinding.FragmentLoginBinding
+import pl.rafalmiskiewicz.ui.MainActivity
 
 class LoginFragment() : Fragment() {
 
@@ -36,7 +37,11 @@ class LoginFragment() : Fragment() {
 
     private fun handleEvent(event: LoginEvent?) {
         when (event) {
-            is LoginEvent.Login -> loginViewModel.login(event.login, event.password)
+            is LoginEvent.Login -> loginViewModel.login(
+                event.login,
+                event.password,
+                (activity as? MainActivity)?.getToken()
+            )
             is LoginEvent.LogOut -> loginViewModel.logOut()
             is LoginEvent.MoveToHours -> findNavController().navigate(R.id.action_loginFragment_to_hoursFragment)
             is LoginEvent.MoveToSchedules -> findNavController().navigate(R.id.action_loginFragment_to_schedulesFragment)

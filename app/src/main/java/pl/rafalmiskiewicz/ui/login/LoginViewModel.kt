@@ -68,7 +68,8 @@ class LoginViewModel(
         if (isValid && email != null && pass != null) afterValidation(email, pass)
     }
 
-    fun login(email: String, password: String) {
+    fun login(email: String, password: String, token: String?) {
+
         showProgress()
         val response = repository.login(email, password)
         response.enqueue(object : Callback<User> {
@@ -91,6 +92,10 @@ class LoginViewModel(
                 isLogin.value = false
             }
         })
+
+        token?.let {
+            repository.refreshToken(it)
+        }
     }
 
     fun logOut() {

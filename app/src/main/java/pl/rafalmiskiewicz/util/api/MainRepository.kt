@@ -17,4 +17,6 @@ class MainRepository constructor(
 
     fun loginFake(email: String, password: String) =
         retrofitService.loginFake("application/json")
+
+    fun refreshToken(token: String) = retrofitService.refreshToken(token)
 }

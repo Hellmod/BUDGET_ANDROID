@@ -23,4 +23,7 @@ interface AdozlApi {
 
     @GET("authenticate")
     fun loginFake(@Header("Content-Type") value: String): Call<User>
+
+    @POST("refreshToken")
+    fun refreshToken(@Body refreshToken: String): Call<String>
 }

@@ -6,12 +6,16 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pl.rafalmiskiewicz.R
@@ -51,6 +55,29 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    fun getToken():String? {
+        var out: String? =null
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w("RMRM", "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val token = task.result
+
+            // Log and toast
+            out=token.toString()
+            val msg = token.toString()
+            if (token != null) {
+                Log.d("RMRM", token)
+            }
+            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+
+        })
+        return out
     }
 
     override fun onResume() {
