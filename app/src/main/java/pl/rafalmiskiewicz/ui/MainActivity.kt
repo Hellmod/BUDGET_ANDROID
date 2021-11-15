@@ -57,9 +57,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun getToken():String? {
-        var out: String? =null
-        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+    fun getToken(): String? {
+        var out: String? = null
+/*        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
                 Log.w("RMRM", "Fetching FCM registration token failed", task.exception)
                 return@OnCompleteListener
@@ -76,14 +76,15 @@ class MainActivity : AppCompatActivity() {
             }
             Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
 
-        })
+        })*/
+        out = "OK"
         return out
     }
 
     override fun onResume() {
         super.onResume()
         val filter = IntentFilter(INTENT_ACTION_SEND_MESSAGE)
-        LocalBroadcastManager.getInstance(this).registerReceiver(receiver,filter)
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, filter)
     }
 
     override fun onPause() {

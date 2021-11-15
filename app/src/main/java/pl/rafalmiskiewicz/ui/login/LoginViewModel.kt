@@ -71,7 +71,8 @@ class LoginViewModel(
     fun login(email: String, password: String, token: String?) {
 
         showProgress()
-        val response = repository.login(email, password)
+        //val response = repository.login(email, password)
+        val response = repository.loginFake(email, password)
         response.enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 hideProgress()
