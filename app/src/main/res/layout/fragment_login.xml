@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:bind="http://schemas.android.com/tools">
 
     <data>
@@ -71,6 +72,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+
+    <TextView
+        android:id="@+id/LeftAmountDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Możesz jeszcze wydać:"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:isVisible="@{viewModel.isLogin}"
+        app:layout_constraintBottom_toTopOf="@+id/LeftAmount"
+        app:layout_constraintEnd_toEndOf="@+id/LeftAmount"
+        app:layout_constraintStart_toStartOf="@+id/LeftAmount" />
+
+    <TextView
+        android:id="@+id/LeftAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:isVisible="@{viewModel.isLogin}"
+        android:text="@{viewModel.amountLeft.amount}"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        tools:text="700 zł"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
         android:id="@+id/button2"

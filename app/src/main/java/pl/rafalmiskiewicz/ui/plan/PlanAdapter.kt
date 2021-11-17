@@ -8,6 +8,7 @@ import pl.rafalmiskiewicz.ui.base.*
 import pl.rafalmiskiewicz.ui.base.BaseHolder
 import pl.rafalmiskiewicz.util.helpers.DateHelper.parseDate
 import pl.rafalmiskiewicz.util.helpers.DateHelper.parseHour
+import kotlin.coroutines.coroutineContext
 import kotlin.properties.Delegates
 
 class PlanAdapter : BaseAdapter<Plan>(), AutoUpdatableAdapter {
@@ -31,7 +32,7 @@ class PlanAdapter : BaseAdapter<Plan>(), AutoUpdatableAdapter {
         override fun bind(item: Plan, clickListener: OnRecyclerListener?) {
 
             binding.apply {
-                itemPlanAmount.text = item.amount
+                itemPlanAmount.text = item.amount + " zł"
                 itemPlanDay.text = parseDate(item.date)
                 itemPlanDescription.text = item.description
                 itemPlanHour.text = parseHour(item.date)

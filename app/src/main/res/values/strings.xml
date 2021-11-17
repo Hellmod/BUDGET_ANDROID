@@ -15,4 +15,6 @@
     <string name="error_unauthorized">Brak dostępu, zaloguj się ponownie</string>
     <string name="error_not_implemented">Trwają prace nad funkcjonalnością</string>
     <string name="warning">Uwaga!</string>
+
+    <string name="price">%1$.2f zł</string>
 </resources>

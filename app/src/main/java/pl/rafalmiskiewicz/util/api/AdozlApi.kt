@@ -1,9 +1,6 @@
 package pl.rafalmiskiewicz.util.api
 
-import pl.rafalmiskiewicz.data.api.Plan
-import pl.rafalmiskiewicz.data.api.Login
-import pl.rafalmiskiewicz.data.api.Transaction
-import pl.rafalmiskiewicz.data.api.User
+import pl.rafalmiskiewicz.data.api.*
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -12,7 +9,10 @@ import retrofit2.http.POST
 
 interface AdozlApi {
 
-    @GET("plan")
+    @GET("left")
+    fun getLeftAmount(): Call<Left>
+
+    @GET("left")
     fun getAllPlan(): Call<List<Plan>>
 
     @GET("transaction")

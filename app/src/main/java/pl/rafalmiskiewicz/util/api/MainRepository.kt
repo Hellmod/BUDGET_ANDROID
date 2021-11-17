@@ -6,6 +6,9 @@ class MainRepository constructor(
     private val retrofitService: AdozlApi
 ) {
 
+    fun getLeftAmount() =
+        retrofitService.getLeftAmount()
+
     fun getAllPlan() =
         retrofitService.getAllPlan()
 

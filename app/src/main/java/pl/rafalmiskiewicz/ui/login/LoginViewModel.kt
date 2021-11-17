@@ -3,6 +3,7 @@ package pl.rafalmiskiewicz.ui.login
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import pl.rafalmiskiewicz.common.Validator.isValidEmail
+import pl.rafalmiskiewicz.data.api.Left
 import pl.rafalmiskiewicz.data.api.User
 import pl.rafalmiskiewicz.data.source.local.CredentialStore
 import pl.rafalmiskiewicz.ui.base.BaseViewModel
@@ -22,6 +23,7 @@ class LoginViewModel(
     val password = MutableLiveData("")
     val user = MutableLiveData<User>()
     val isLogin = MutableLiveData<Boolean>(false)
+    val amountLeft = MutableLiveData<Left>()
 
     init {
         isLogin.value = credentialStore.isLogged
@@ -85,6 +87,7 @@ class LoginViewModel(
                         isLogin.value = true
                     }
                 }
+                getLeftAmount()
             }
 
             override fun onFailure(call: Call<User>, t: Throwable) {
@@ -97,6 +100,22 @@ class LoginViewModel(
         token?.let {
             repository.refreshToken(it)
         }
+    }
+
+    private fun getLeftAmount() {
+        val response = repository.getLeftAmount()
+        response.enqueue(object : Callback<Left> {
+            override fun onResponse(call: Call<Left>, response: Response<Left>) {
+                var left: String? = response.body()?.amount
+                left?.let{
+                    amountLeft.value = Left(amount = it + " zł")
+                }
+            }
+
+            override fun onFailure(call: Call<Left>, t: Throwable) {
+                amountLeft.value = Left(amount = "")
+            }
+        })
     }
 
     fun logOut() {

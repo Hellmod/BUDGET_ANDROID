@@ -30,7 +30,7 @@ class TransactionAdapter : BaseAdapter<Transaction>(), AutoUpdatableAdapter {
         override fun bind(item: Transaction, clickListener: OnRecyclerListener?) {
 
             binding.apply {
-                itemTransactionAmount.text = item.amount
+                itemTransactionAmount.text = item.amount + " zł"
                 itemTransactionDay.text = parseDate(item.date)
                 itemTransactionDescription.text = item.description
                 itemTransactionHour.text = parseHour(item.date)
