@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="pl.rafalmiskiewicz.ui.schedules.SchedulesViewModel" />
+            type="pl.rafalmiskiewicz.ui.transaction.TransactionViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,8 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
-            app:data="@{viewModel.schedulesList}"
-            app:onRecyclerClick="@{viewModel::onParkingHistoryClicked}"
+            app:data="@{viewModel.transactionList}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

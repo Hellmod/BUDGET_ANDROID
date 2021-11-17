@@ -88,9 +88,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        android:onClick="@{() -> viewModel.onSchedulesClicked()}"
+        android:onClick="@{() -> viewModel.onTransactionClicked()}"
         app:isVisible="@{viewModel.isLogin}"
-        android:text="Harmonogram"
+        android:text="Tranzakcje"
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintTop_toTopOf="parent" />
 

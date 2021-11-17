@@ -1,4 +1,4 @@
-package pl.rafalmiskiewicz.ui.schedules
+package pl.rafalmiskiewicz.ui.transaction
 
 import android.content.Intent
 import android.net.Uri
@@ -10,46 +10,31 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import pl.rafalmiskiewicz.util.extensions.observeEvent
-import pl.rafalmiskiewicz.databinding.FragmentSchedulesBinding
+import pl.rafalmiskiewicz.databinding.FragmentTransactionBinding
 
-class SchedulesFragment() : Fragment() {
+class TransactionFragment() : Fragment() {
 
-    private val schedulesViewModel by viewModel<SchedulesViewModel>()
-    private val mAdapter by inject<SchedulesAdapter>()
+    private val transactionViewModel by viewModel<TransactionViewModel>()
+    private val mAdapter by inject<TransactionAdapter>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentSchedulesBinding.inflate(inflater, container, false).apply {
-            viewModel = schedulesViewModel
+        val binding = FragmentTransactionBinding.inflate(inflater, container, false).apply {
+            viewModel = transactionViewModel
             lifecycleOwner = viewLifecycleOwner
             favouritesList.apply {
                 adapter = mAdapter
             }
         }
-
-
-        initObservers()
-
         return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        schedulesViewModel.getAllSchedules()
-    }
-
-    private fun initObservers() {
-        observeEvent(schedulesViewModel.event, ::handleEvent)
-    }
-
-    private fun handleEvent(event: SchedulesEvent?) {
-        when (event) {
-            is SchedulesEvent.OpenMap -> openMap(event.addressGoogle)
-        }
+        transactionViewModel.getAllTransaction()
     }
 
     private fun openMap(address_google:String) {

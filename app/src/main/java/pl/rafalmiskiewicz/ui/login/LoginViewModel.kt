@@ -41,8 +41,8 @@ class LoginViewModel(
         sendEvent(LoginEvent.MoveToHours)
     }
 
-    fun onSchedulesClicked() {
-        sendEvent(LoginEvent.MoveToSchedules)
+    fun onTransactionClicked() {
+        sendEvent(LoginEvent.MoveToTransaction)
     }
 
     private fun validateAndHandleForm(

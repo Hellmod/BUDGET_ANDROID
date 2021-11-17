@@ -9,8 +9,8 @@ class MainRepository constructor(
     fun getAllHours() =
         retrofitService.getAllHours()
 
-    fun getAllSchedules() =
-        retrofitService.getAllSchedules()
+    fun getAllTransaction() =
+        retrofitService.getAllTransaction()
 
     fun login(email: String, password: String) =
         retrofitService.login("application/json", Login(username = email, password = password))
