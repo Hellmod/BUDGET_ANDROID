@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/item_schedule.xml" value="0.5" />
       </map>
     </option>
   </component>
