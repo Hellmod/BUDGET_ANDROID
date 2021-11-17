@@ -11,8 +11,8 @@
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_loginFragment_to_hoursFragment"
-            app:destination="@id/hoursFragment"
+            android:id="@+id/action_loginFragment_to_planFragment"
+            app:destination="@id/planFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -27,10 +27,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/hoursFragment"
-        android:name="pl.rafalmiskiewicz.ui.hours.HoursFragment"
+        android:id="@+id/planFragment"
+        android:name="pl.rafalmiskiewicz.ui.plan.PlanFragment"
         android:label="LoginFragment"
-        tools:layout="@layout/fragment_hours" />
+        tools:layout="@layout/fragment_plan" />
 
     <fragment
         android:id="@+id/transactionFragment"

@@ -6,8 +6,8 @@ class MainRepository constructor(
     private val retrofitService: AdozlApi
 ) {
 
-    fun getAllHours() =
-        retrofitService.getAllHours()
+    fun getAllPlan() =
+        retrofitService.getAllPlan()
 
     fun getAllTransaction() =
         retrofitService.getAllTransaction()

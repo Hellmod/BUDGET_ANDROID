@@ -1,4 +1,4 @@
-package pl.rafalmiskiewicz.ui.hours
+package pl.rafalmiskiewicz.ui.plan
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,27 +7,26 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import pl.rafalmiskiewicz.databinding.FragmentPlanBinding
 import pl.rafalmiskiewicz.util.extensions.observeEvent
-import pl.rafalmiskiewicz.databinding.FragmentHoursBinding
 
-class HoursFragment() : Fragment() {
+class PlanFragment() : Fragment() {
 
-    private val hoursViewModel by viewModel<HoursViewModel>()
-    private val mAdapter by inject<HoursAdapter>()
+    private val planViewModel by viewModel<PlanViewModel>()
+    private val mAdapter by inject<PlanAdapter>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentHoursBinding.inflate(inflater, container, false).apply {
-            viewModel = hoursViewModel
+        val binding = FragmentPlanBinding.inflate(inflater, container, false).apply {
+            viewModel = planViewModel
             lifecycleOwner = viewLifecycleOwner
             favouritesList.apply {
                 adapter = mAdapter
             }
         }
-
 
         initObservers()
 
@@ -36,14 +35,14 @@ class HoursFragment() : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        hoursViewModel.getAllHours()
+        planViewModel.getAllPlan()
     }
 
     private fun initObservers() {
-        observeEvent(hoursViewModel.event, ::handleEvent)
+        observeEvent(planViewModel.event, ::handleEvent)
     }
 
-    private fun handleEvent(event: HoursEvent?) {
+    private fun handleEvent(event: PlanEvent?) {
 
     }
 }

@@ -37,8 +37,8 @@ class LoginViewModel(
         sendEvent(LoginEvent.LogOut)
     }
 
-    fun onHoursClicked() {
-        sendEvent(LoginEvent.MoveToHours)
+    fun onPlanClicked() {
+        sendEvent(LoginEvent.MoveToPlan)
     }
 
     fun onTransactionClicked() {

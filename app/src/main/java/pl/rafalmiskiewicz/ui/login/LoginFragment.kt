@@ -43,7 +43,7 @@ class LoginFragment() : Fragment() {
                 (activity as? MainActivity)?.getToken()
             )
             is LoginEvent.LogOut -> loginViewModel.logOut()
-            is LoginEvent.MoveToHours -> findNavController().navigate(R.id.action_loginFragment_to_hoursFragment)
+            is LoginEvent.MoveToPlan -> findNavController().navigate(R.id.action_loginFragment_to_planFragment)
             is LoginEvent.MoveToTransaction -> findNavController().navigate(R.id.action_loginFragment_to_transactionFragment)
         }
     }

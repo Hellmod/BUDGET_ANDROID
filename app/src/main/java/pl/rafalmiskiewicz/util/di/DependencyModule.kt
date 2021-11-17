@@ -8,8 +8,8 @@ import pl.rafalmiskiewicz.data.source.HttpClientFactory
 import pl.rafalmiskiewicz.data.source.local.AppPreferences
 import pl.rafalmiskiewicz.data.source.local.CredentialStore
 import pl.rafalmiskiewicz.ui.MainViewModel
-import pl.rafalmiskiewicz.ui.hours.HoursAdapter
-import pl.rafalmiskiewicz.ui.hours.HoursViewModel
+import pl.rafalmiskiewicz.ui.plan.PlanAdapter
+import pl.rafalmiskiewicz.ui.plan.PlanViewModel
 import pl.rafalmiskiewicz.ui.login.LoginViewModel
 import pl.rafalmiskiewicz.ui.transaction.TransactionAdapter
 import pl.rafalmiskiewicz.ui.transaction.TransactionViewModel
@@ -19,14 +19,14 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 val adapterModule = module {
-    factory { HoursAdapter() }
+    factory { PlanAdapter() }
     factory { TransactionAdapter() }
 }
 
 val viewModelModule: Module = module {
     viewModel { MainViewModel() }
     viewModel { LoginViewModel(get(),get())}
-    viewModel { HoursViewModel(get()) }
+    viewModel { PlanViewModel(get()) }
     viewModel { TransactionViewModel(get()) }
 }
 

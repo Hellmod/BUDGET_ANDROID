@@ -1,6 +1,6 @@
 package pl.rafalmiskiewicz.util.api
 
-import pl.rafalmiskiewicz.data.api.Hours
+import pl.rafalmiskiewicz.data.api.Plan
 import pl.rafalmiskiewicz.data.api.Login
 import pl.rafalmiskiewicz.data.api.Transaction
 import pl.rafalmiskiewicz.data.api.User
@@ -12,8 +12,8 @@ import retrofit2.http.POST
 
 interface AdozlApi {
 
-    @GET("hours")
-    fun getAllHours(): Call<List<Hours>>
+    @GET("plan")
+    fun getAllPlan(): Call<List<Plan>>
 
     @GET("transaction")
     fun getAllTransaction(): Call<List<Transaction>>
