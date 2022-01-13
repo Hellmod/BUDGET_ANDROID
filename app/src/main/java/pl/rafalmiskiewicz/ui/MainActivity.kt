@@ -7,23 +7,31 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_login.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pl.rafalmiskiewicz.R
 import pl.rafalmiskiewicz.data.source.local.AppPreferences
 import pl.rafalmiskiewicz.databinding.ActivityMainBinding
+import pl.rafalmiskiewicz.ui.login.LoginEvent
 import pl.rafalmiskiewicz.util.notification.NotificationService.Companion.INTENT_ACTION_SEND_MESSAGE
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var toggle: ActionBarDrawerToggle
 
     private val appPreferences: AppPreferences by inject()
 
@@ -55,6 +63,29 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.ok, R.string.info)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.miItem1 ->
+                    findNavController(R.id.nav_host_fragment).navigate(R.id.loginFragment)
+                R.id.miItem2 ->
+                    findNavController(R.id.nav_host_fragment).navigate(R.id.action_loginFragment_to_transactionFragment)
+                R.id.miItem3 ->
+                    findNavController(R.id.nav_host_fragment).navigate(R.id.action_loginFragment_to_planFragment)
+
+            }
+            true
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item))
+            return true
+        return super.onOptionsItemSelected(item)
     }
 
     fun getToken(): String? {
