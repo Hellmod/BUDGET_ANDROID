@@ -12,7 +12,7 @@ interface AdozlApi {
     @GET("left")
     fun getLeftAmount(): Call<Left>
 
-    @GET("left")
+    @GET("plan")
     fun getAllPlan(): Call<List<Plan>>
 
     @GET("transaction")
